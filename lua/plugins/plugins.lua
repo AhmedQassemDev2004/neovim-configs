@@ -9,19 +9,18 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add tokyo nigth 
   {
-    "navarasu/onedark.nvim",
+    "ellisonleao/gruvbox.nvim",
+    config = true,
+    priority = 1000,
     config = function()
-      require('onedark').setup {style = 'darker'}
-    end,
+      vim.o.background = "dark" -- or "light" for light mode
+      vim.cmd([[colorscheme gruvbox]])
+    end
   },
   -- Configure LazyVim to load
   {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "tokyonight-night",
-    },
+    "LazyVim/LazyVim"
   },
 
   -- change trouble config

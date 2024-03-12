@@ -3,3 +3,4 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("n", "<C-x>", "<Cmd>CompetiTest run<CR>", {})
+vim.keymap.set("n", "<C-r>", "<Cmd>CompetiTest receive problem<CR>", {})
