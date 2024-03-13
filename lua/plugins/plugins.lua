@@ -1,26 +1,15 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
--- if true then return {} end
-
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
   {
-    "ellisonleao/gruvbox.nvim",
-    config = true,
-    priority = 1000,
+    "folke/tokyonight.nvim",
     config = function()
-      vim.o.background = "dark" -- or "light" for light mode
-      vim.cmd([[colorscheme gruvbox]])
-    end
+      vim.cmd("colorscheme tokyonight-night")
+      vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+      vim.cmd("hi NormalFloat guibg=NONE ctermbg=NONE")
+    end,
   },
   -- Configure LazyVim to load
   {
-    "LazyVim/LazyVim"
+    "LazyVim/LazyVim",
   },
 
   -- change trouble config
