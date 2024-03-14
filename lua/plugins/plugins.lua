@@ -3,7 +3,7 @@ return {
     "sainnhe/gruvbox-material",
     config = function()
       vim.cmd("colorscheme gruvbox-material")
-      vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+      vim.cmd("hi Normal guibg=black ctermbg=black")
       --vim.cmd("hi NormalFloat guibg=NONE ctermbg=NONE")
     end,
   },
