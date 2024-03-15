@@ -1,10 +1,8 @@
 return {
   {
-    "sainnhe/gruvbox-material",
+    "folke/tokyonight.nvim",
     config = function()
-      vim.cmd("colorscheme gruvbox-material")
-      vim.cmd("hi Normal guibg=black ctermbg=black")
-      --vim.cmd("hi NormalFloat guibg=NONE ctermbg=NONE")
+      vim.cmd("colorscheme tokyonight-night")
     end,
   },
   -- Configure LazyVim to load
