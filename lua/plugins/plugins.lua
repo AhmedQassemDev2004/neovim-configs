@@ -1,5 +1,25 @@
 return {
   {
+    "projekt0n/github-nvim-theme",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("github-theme").setup({})
+
+      vim.cmd("colorscheme github_dark_default")
+    end,
+  },
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+  },
+  {
     "andweeb/presence.nvim",
     config = function()
       require("presence").setup({
@@ -25,32 +45,6 @@ return {
         workspace_text = "Working on %s", -- Format string rendered when in a git repository (either string or function(project_name: string|nil, filename: string): string)
         line_number_text = "Line %s out of %s", -- Format string rendered when `enable_line_number` is set to true (either string or function(line_number: number, line_count: number): string)
       })
-    end,
-  },
-  {
-    {
-      "uloco/bluloco.nvim",
-      lazy = false,
-      priority = 1000,
-      dependencies = { "rktjmp/lush.nvim" },
-      config = function()
-        require("bluloco").setup({
-          style = "auto", -- "auto" | "dark" | "light"
-          transparent = true,
-          italics = false,
-          terminal = vim.fn.has("gui_running") == 1, -- bluoco colors are enabled in gui terminals per default.
-          guicursor = true,
-        })
-
-        vim.opt.termguicolors = true
-        --        vim.cmd("colorscheme bluloco")
-      end,
-    },
-  },
-  {
-    "folke/tokyonight.nvim",
-    config = function()
-      vim.cmd("colorscheme tokyonight")
     end,
   },
   -- Configure LazyVim to load
@@ -184,11 +178,28 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
         "vim",
         "yaml",
-        "php",
       },
     },
+  },
+
+  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+  -- would overwrite `ensure_installed` with the new value.
+  -- If you'd rather extend the default config, use the code below instead:
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "tsx",
+        "typescript",
+      })
+    end,
   },
 
   -- the opts function can also be used to change the default opts:
